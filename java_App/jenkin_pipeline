@@ -22,5 +22,5 @@ node{
   }
   stage('success'){
       echo "building compilation and testing compeleted succesfully"
-  }   
+  }
 }
