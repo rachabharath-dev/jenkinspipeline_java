@@ -1,26 +1,47 @@
-node{
-   stage('Checkout'){
+node {
+    stage('Checkout') {
         checkout scm
-   }
-   stage('Build'){
-        sh 'mvn clean'
-   }
-   stage('Compile'){
-        sh 'mvn compile'
-   }
-   stage('Test'){
-        sh 'mvn test'
-   }
-   stage('Package'){
-        sh 'mvn package'
-   }
-  stage('Archive Artifacts'){
-       archiveArtifacts artifacts:'target/*.jar',fingerprint:true
-   }
-  stage('Run') {
-        sh 'java -cp target/hello-world-java-1.0-SNAPSHOT.jar com.bharath.java_App'
-  }
-  stage('success'){
-      echo "building compilation and testing compeleted succesfully"
-  }
+    }
+
+    stage('Build') {
+        dir('java_App') {
+            sh 'mvn clean'
+        }
+    }
+
+    stage('Compile') {
+        dir('java_App') {
+            sh 'mvn compile'
+        }
+    }
+
+    stage('Test') {
+        dir('java_App') {
+            sh 'mvn test'
+        }
+    }
+
+    stage('Package') {
+        dir('java_App') {
+            sh 'mvn package'
+        }
+    }
+
+    stage('Archive Artifacts') {
+        dir('java_App') {
+            archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
+        }
+    }
+
+    stage('Run') {
+        dir('java_App') {
+            // Fully qualified class name from package declaration
+            sh 'java -cp target/hello-world-java-1.0-SNAPSHOT.jar com.bharath.App'
+        }
+    }
+
+    stage('Success') {
+        echo "Build, compilation, and testing completed successfully"
+    }
 }
+
