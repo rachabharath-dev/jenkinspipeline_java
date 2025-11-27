@@ -18,9 +18,9 @@ node{
        archiveArtifacts artifacts:'target/*.jar',fingerprint:true
    }
   stage('Run') {
-        sh 'java -cp target/hello-world-java-1.0-SNAPSHOT.jar com.example.App'
+        sh 'java -cp target/hello-world-java-1.0-SNAPSHOT.jar com.bharath.java_App'
   }
-  stage('success')
+  stage('success'){
       echo "building compilation and testing compeleted succesfully"
   }   
 }
