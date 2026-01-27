@@ -3,11 +3,11 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.bharath</groupId>
-  <artifactId>java_App</artifactId>
-  <version>1.0</version>
+  <groupId>com.java</groupId>
+  <artifactId>my-java-app</artifactId>
+  <version>1.0-SNAPSHOT</version>
 
-  <name>java_App</name>
+  <name>my-java-app</name>
   <!-- FIXME change it to the project's website -->
   <url>http://www.example.com</url>
 
@@ -64,9 +64,17 @@
           <version>3.3.0</version>
         </plugin>
         <plugin>
-          <artifactId>maven-jar-plugin</artifactId>
+         <artifactId>maven-jar-plugin</artifactId>
           <version>3.4.2</version>
+           <configuration>
+            <archive>
+             <manifest>
+              <mainClass>com.java.App</mainClass>
+            </manifest>
+           </archive>
+         </configuration>
         </plugin>
+
         <plugin>
           <artifactId>maven-install-plugin</artifactId>
           <version>3.1.2</version>
